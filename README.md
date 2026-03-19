@@ -100,5 +100,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ---
 
 <p align="center">
-  Built with ❤️ by <b>Antigravity</b> 🛸
+  Built with ❤️ by <b>Usanase</b> 🛸
 </p>
