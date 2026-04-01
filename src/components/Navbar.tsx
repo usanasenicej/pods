@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,12 +21,32 @@ const Navbar: React.FC = () => {
           <span className="brand-text">URA EARPODS</span>
         </div>
         
+        {/* Desktop Links */}
         <div className="nav-links">
           <a href="#about" className="active">About</a>
           <a href="#product">Our Product</a>
           <a href="#features">Features</a>
           <a href="#offer">Offer</a>
           <a href="#contact">Contact</a>
+        </div>
+
+        {/* Mobile Toggle */}
+        <button 
+          className="mobile-toggle" 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Drawer */}
+      <div className={`mobile-drawer ${isMobileMenuOpen ? 'open' : ''}`}>
+        <div className="drawer-links">
+          <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>About</a>
+          <a href="#product" onClick={() => setIsMobileMenuOpen(false)}>Our Product</a>
+          <a href="#features" onClick={() => setIsMobileMenuOpen(false)}>Features</a>
+          <a href="#offer" onClick={() => setIsMobileMenuOpen(false)}>Offer</a>
+          <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Contact Us</a>
         </div>
       </div>
 
@@ -101,8 +123,47 @@ const Navbar: React.FC = () => {
           box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
         }
 
+        .mobile-toggle {
+          display: none;
+          background: none;
+          border: none;
+          color: var(--text-dark);
+          cursor: pointer;
+        }
+
+        .mobile-drawer {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          max-width: 320px;
+          height: 100vh;
+          background: #fff;
+          z-index: 999;
+          padding: 6rem 2rem;
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        }
+
+        .mobile-drawer.open { right: 0; }
+
+        .drawer-links {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .drawer-links a {
+          font-size: 1.4rem;
+          font-weight: 800;
+          color: var(--text-dark);
+          text-decoration: none;
+          letter-spacing: -0.5px;
+        }
+
         @media (max-width: 768px) {
           .nav-links { display: none; }
+          .mobile-toggle { display: block; }
         }
       `}</style>
     </nav>
