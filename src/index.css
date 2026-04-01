@@ -4,12 +4,25 @@
   --primary: #f89e1b;
   --primary-glow: rgba(248, 158, 27, 0.3);
   --bg-white: #ffffff;
-  --bg-light: #f8f9fa;
+  --bg-light: #fafafa;
   --bg-card: #ffffff;
-  --text-dark: #121212;
-  --text-gray: #555555;
-  --text-light-gray: #a0a0a0;
-  --transition: all 0.3s ease;
+  --text-dark: #0f172a;
+  --text-gray: #475569;
+  --text-light-gray: #94a3b8;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--primary);
+  color: white;
 }
 
 * {
@@ -29,6 +42,8 @@ body {
 /* Remove main-wrapper boundary to let it take full screen */
 .main-wrapper {
   width: 100%;
+  background: radial-gradient(circle at top right, rgba(248, 158, 27, 0.05), transparent 400px),
+              radial-gradient(circle at bottom left, rgba(248, 158, 27, 0.03), transparent 400px);
 }
 
 .container {
@@ -56,14 +71,14 @@ body {
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, #fbbf24 100%);
   color: #fff;
-  box-shadow: 0 6px 15px var(--primary-glow);
+  box-shadow: 0 10px 15px -3px var(--primary-glow);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px var(--primary-glow);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 25px -5px var(--primary-glow);
 }
 
 .btn-dark {
@@ -90,6 +105,17 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--primary);
   border-radius: 4px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 1024px) {

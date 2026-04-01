@@ -42,81 +42,104 @@ const Offer: React.FC = () => {
         }
 
         .offer-card {
-          background: #ffffff;
-          border-radius: 40px;
-          padding: 3.5rem 4rem; /* Reduced padding from 5rem 6rem */
-          color: #222;
+          background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+          border-radius: 48px;
+          padding: 4rem 5rem;
+          color: var(--text-dark);
           overflow: hidden;
           position: relative;
-          box-shadow: 0 10px 40px rgba(0,0,0,0.02); /* Very subtle shadow */
-          border: 1px solid #f0f0f0;
+          box-shadow: var(--shadow-xl);
+          border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .offer-card::before {
+          content: "";
+          position: absolute;
+          top: -20%;
+          right: -10%;
+          width: 400px;
+          height: 400px;
+          background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+          z-index: 1;
         }
 
         .offer-row {
           display: flex;
           align-items: center;
-          gap: 4rem; /* Tightened gap */
+          gap: 6rem;
           position: relative;
           z-index: 2;
         }
 
-        .offer-text-col { flex: 1.3; } /* Adjusted ratio out of 1.5 */
-        .offer-visual-col { flex: 1; }
+        .offer-text-col { flex: 1.5; }
+        .offer-visual-col { flex: 1; display: flex; justify-content: flex-end; }
 
         .offer-title {
-          font-size: 3.2rem; /* Scaled down slightly */
+          font-size: 3.8rem;
           font-weight: 800;
-          line-height: 1.1;
-          margin-bottom: 1.5rem;
+          line-height: 1;
+          margin-bottom: 2rem;
+          letter-spacing: -1.5px;
         }
 
         .offer-desc {
-          font-size: 1.05rem;
+          font-size: 1.1rem;
           color: var(--text-gray);
-          line-height: 1.6;
-          margin-bottom: 2.5rem;
-          max-width: 500px;
+          line-height: 1.8;
+          margin-bottom: 3rem;
+          max-width: 550px;
         }
 
         .offer-form {
           display: flex;
-          gap: 0.8rem; /* Tighter internal space */
-          background: #fdfdfd;
-          padding: 0.5rem;
-          border-radius: 999px;
-          border: 1px solid #e0e0e0;
+          gap: 0.5rem;
+          background: #ffffff;
+          padding: 0.6rem;
+          border-radius: 24px;
+          border: 1px solid rgba(15, 23, 42, 0.1);
           width: fit-content;
-          box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+          box-shadow: var(--shadow-lg);
+          transition: all 0.3s ease;
+        }
+
+        .offer-form:focus-within {
+          border-color: var(--primary);
+          box-shadow: 0 0 0 4px var(--primary-glow);
+          transform: translateY(-2px);
         }
 
         .offer-input {
           background: none;
           border: none;
-          color: #222;
-          padding: 0.6rem 1.5rem; /* Tighter padding */
-          font-size: 0.95rem;
-          width: 300px; /* Reduced width */
+          color: var(--text-dark);
+          padding: 0 1.5rem;
+          font-size: 1rem;
+          font-weight: 600;
+          width: 320px;
           outline: none;
         }
 
-        .offer-input::placeholder { color: #aaa; }
+        .offer-input::placeholder { color: var(--text-light-gray); font-weight: 400; }
 
         .offer-btn {
-          min-width: 140px;
-          padding: 0.8rem 1.5rem;
-          border-radius: 999px;
+          min-width: 160px;
+          padding: 1rem 2rem;
+          border-radius: 18px;
         }
 
         .offer-mockup {
-          width: 250px; /* Smaller mockup */
-          height: 400px; /* Smaller mockup */
-          border-radius: 30px;
+          width: 280px;
+          height: 480px;
+          border-radius: 40px;
           overflow: hidden;
-          border: 8px solid #222;
-          box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-          transform: rotate(5deg) translateY(10px);
-          background: #fff;
-          margin-left: auto; /* Push to right edge */
+          border: 12px solid #0f172a;
+          box-shadow: var(--shadow-xl);
+          transform: rotate(6deg) translateY(20px);
+          transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .offer-card:hover .offer-mockup {
+          transform: rotate(0deg) translateY(0px) scale(1.05);
         }
 
         .offer-img { width: 100%; height: 100%; object-fit: cover; }
