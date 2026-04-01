@@ -7,6 +7,7 @@ import QualitySection from './components/QualitySection';
 import Offer from './components/Offer';
 import Footer from './components/Footer';
 import CursorFollower from './components/CursorFollower';
+import BackToTop from './components/BackToTop';
 
 function App() {
   useEffect(() => {
@@ -25,6 +26,7 @@ function App() {
   return (
     <div className="main-wrapper">
       <CursorFollower />
+      <BackToTop />
       <Navbar />
       <Hero />
       <div className="reveal"><Showcase /></div>
